@@ -4,7 +4,7 @@ function theme_precmd {
   PR_FILLBAR=""
   PR_PWDLEN=""
 
-  local promptsize=${#${(%):---[%D{%a','%b%d' '%H:%M}]--[%n@%m]--}}
+  local promptsize=${#${(%):---[%D{%a','%b%d' '%H:%M:%S}]--[%n@%m]--}}
   local pwdsize=${#${(%):-%~}}
 
   # Truncate the path if it's too long.
@@ -104,7 +104,7 @@ fi
 # Finally, the prompt.
 PROMPT='${PR_SET_CHARSET}${PR_STITLE}${(e)PR_TITLEBAR}\
 ${PR_GREY}${PR_ULCORNER}${PR_HBAR}[\
-${PR_YELLOW}%D{%a,%b%d %H:%M}\
+${PR_YELLOW}%D{%a,%b%d %H:%M:%S}\
 ${PR_GREY}]${PR_HBAR}\
 ${PR_GREY}${(e)PR_FILLBAR}\
 ${PR_GREY}${PR_HBAR}[\
@@ -113,8 +113,7 @@ ${PR_GREY}]${PR_HBAR}${PR_URCORNER}\
 
 ${PR_GREY}${PR_LLCORNER}${PR_HBAR}[\
 ${PR_GREEN}%${PR_PWDLEN}<...<%~%<<\
-${PR_GREY} ${PR_HBAR}${PR_HBAR}\
-${PR_NO_COLOUR} ${PR_MAGENTA}:${PR_RED}:${PR_YELLOW}:${PR_GREEN}:${PR_CYAN}:${PR_BLUE}:\
+${PR_NO_COLOUR} ${PR_CYAN}\$\
 ${PR_NO_COLOUR} '
 
 # display exitcode on the right when > 0
